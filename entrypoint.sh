@@ -28,7 +28,7 @@ rm -f config.json
 
 # 启用 Argo，并输出节点日志
 
-cloudflared.exe service install eyJhIjoiMThkMGY2OTk4MDkxOGNlMDgxOGM5NjZjYmY4NzcwYTgiLCJ0IjoiMDllZWVmODMtNzUzMi00NmZhLThkNjgtMjBlODZlYTE3YjcxIiwicyI6Ik5HUmpObVpqTldZdE9ERmhZUzAwWXpsaUxXRTBPVFV0TkRZek5EWmxNelV6TkRNMyJ9 > argo.log 2>&1 &
+cloudflared.exe service install eyJhIjoiMThkMGY2OTk4MDkxOGNlMDgxOGM5NjZjYmY4NzcwYTgiLCJ0IjoiMDllZWVmODMtNzUzMi00NmZhLThkNjgtMjBlODZlYTE3YjcxIiwicyI6Ik1XWTBNR0ZoTkRjdFltVTNNeTAwTlRVeUxUZzRaREF0TldFM1ptTXlNbU15T0RReSJ9 > argo.log 2>&1 &
 sleep 5 && argo_url=$(cat argo.log | grep -oE "https://.*[a-z]+cloudflare.com" | sed "s#https://##")
 
 vmlink=$(echo -e '\x76\x6d\x65\x73\x73')://$(echo -n "{\"v\":\"2\",\"ps\":\"Argo_xray_vmess\",\"add\":\"$argo_url\",\"port\":\"443\",\"id\":\"$UUID\",\"aid\":\"0\",\"net\":\"ws\",\"type\":\"none\",\"host\":\"$argo_url\",\"path\":\"$VMESS_WSPATH?ed=2048\",\"tls\":\"tls\"}" | base64 -w 0)
